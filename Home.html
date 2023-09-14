@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Center the card horizontally and vertically */
+      .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* This makes the card full-height of the viewport */
+      }
+
+      /* Style the card */
+      .card {
+        width: 250px; /* Set the desired width of the card */
+        padding-top: 68px;
+        height: 47%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        background-color: cadetblue;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card">
+        <div class="wave -one"></div>
+        <div class="wave -one"></div>
+        <div class="wave -one"></div>
+
+        <div id="weatherCon">
+          <i class="fa-solid fa-sun"></i>
+        </div>
+
+        <div class="info">
+          <h2 class="location">
+            <i class="fa-solid fa-street-view"></i>{%location%} ,{%country%}
+          </h2>
+          <!-- <form id="weatherForm" method="" action="">
+            <label for="city name">Enter your city name: </label>
+            <input type="text" name="city name" id="city_name" required>
+        </form> -->
+          <p id="date">date</p>
+          <h4 id="temp">{%tempVal%}&deg;C</h4>
+          <h4 id="tempmin_max">
+            MIN {%tempMin%}&deg;C | MAX {%tempMax%}&deg;C
+          </h4>
+        </div>
+      </div>
+    </div>
+    <script>
+      const currDate = document.getElementById("date");
+      const weatherCon = document.getElementById("weatherCon");
+      const city_name = document.getElementById("city_name");
+
+      const tempStatus = "{%tempStatus%}";
+      if (tempStatus == "Sunny") {
+        weatherCon.innerHTML = "<i class='fa-solid fa-sun'></i>";
+      } else if (tempStatus == "Rainy") {
+        weatherCon.innerHTML = "<i class='fa-solid fa-cloud-rain'></i>";
+      } else if (tempStatus == "Clouds") {
+        weatherCon.innerHTML =
+          "<i class='fa-solid fa-cloud' style='color : #FFC107;'></i>";
+      } else {
+        weatherCon.innerHTML = "<i class='fa-solid fa-cloud' ></i>";
+      }
+      const day = () => {
+        let currDay = new Date();
+        const weekDay = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        let day = weekDay[currDay.getDay()];
+        let currMonth = new Date();
+        const months = [
+          "Jan",
+          "Feb",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+
+        let m = months[currMonth.getMonth()];
+
+        let cDay = currDay.getDate();
+
+        let hours = currDay.getHours();
+        let minutes = currDay.getMinutes();
+
+        let p = "AM";
+        if (hours > 11) {
+          p = "PM";
+          if (hours > 12) {
+            hours -= 12;
+          }
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+
+        return `${day} | ${m} ${cDay} | ${hours}:${minutes} ${p}`;
+      };
+      currDate.innerHTML = day();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "WeatherApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Utkarsh Srivastava",
+  "license": "ISC",
+  "dependencies": {
+    "readlines": "^0.2.0",
+    "requests": "^0.3.0"
+  }
+}
